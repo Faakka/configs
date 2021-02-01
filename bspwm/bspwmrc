@@ -36,7 +36,7 @@ bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a pamac-manager state=floating
+bspc rule -a Pamac-manager state=floating
 bspc rule -a qBittorrent desktop='^4' state=floating follow=on
 bspc rule -a Thunar desktop='^4' state=floating follow=on
 bspc rule -a Deadbeef desktop='^3' state=floating follow=on
