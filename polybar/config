@@ -33,7 +33,7 @@ alert = #bd2c40
 [boti/settings]
 background = ${colors.background-alt}
 underline = ${colors.primary}
-padding = 4
+padding = 6
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -63,9 +63,19 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm
+font-3 = FontAwesome5Free:style=Solid:pixelsize=12:antialias=false;1
+font-4 = FontAwesome5Free:style=Regular:pixelsize=10:antialias=false;1
+font-5 = FontAwesome5Brands:style=Regular:pixelsize=16:antialias=false;1
+
+font-6 = icomoon:style=Regular:pixelsize=14:antialias=false;1
+
+font-7 = TerminessTTF Nerd Font Mono:style=Medium:pixelsize=25:antialias=false;5
+
+font-8 = NotoSansMono Nerd Font:style=Regular:pixelsize=20:antialias=false;1
+
+modules-left = powermenu bspwm
 modules-center = pulseaudio filesystem-root memory cpu temperature
-modules-right =  powermenu date
+modules-right = date
 
 tray-position = right
 tray-padding = 2
@@ -95,7 +105,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = HDD: %used% (%percentage_used%%)
+label-mounted =   %used% (%percentage_used%%)
 label-unmounted = %mountpoint% not mounted
 label-mounted-background = ${boti/settings.background}
 label-mounted-underline = ${boti/settings.underline}
@@ -107,7 +117,7 @@ type = internal/bspwm
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 2 
 
 label-occupied = %index%
 label-occupied-padding = 2
@@ -121,7 +131,8 @@ label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
 ; Separator in between workspaces
-label-separator = |
+label-separator = / 
+label-separator-foreground = ${boti/settings.background}
 
 [module/mpd]
 type = internal/mpd
@@ -163,7 +174,7 @@ card = intel_backlight
 type = internal/cpu
 interval = 1
 format = <label> <bar-load>
-label = CPU
+label = " "
 ;ramp-load-spacing = 1
 ;ramp-load-0 = ▁
 ;ramp-load-0-foreground = #aaff77
@@ -208,7 +219,8 @@ format-padding = ${boti/settings.padding}
 type = internal/memory
 interval = 2
 format = <label> <bar-used>
-label =RAM
+label = " "
+; label-foreground = ${boti/settings.underline}
 format-background = ${boti/settings.background}
 format-underline = ${boti/settings.underline}
 format-padding = ${boti/settings.padding}
@@ -290,22 +302,23 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <ramp-volume> <label-volume>
 format-volume-background = ${boti/settings.background}
 format-volume-underline = ${boti/settings.underline}
 format-volume-padding = ${boti/settings.padding}
 label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = muted
+label-muted = " " 
 label-muted-background = ${boti/settings.background}
 label-muted-underline = {boti/settings.underline}
 label-muted-padding = ${boti/settings.padding}
 
 ; Only applies if <ramp-volume> is used
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
+ramp-volume-0 = " "
+ramp-volume-1 = " "
+ramp-volume-2 = " "
+ramp-volume-3 = " "
 
 ; Right and Middle click
 click-right = pavucontrol
@@ -377,10 +390,10 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 = " "
+ramp-1 = " "
+ramp-2 = " "
+;ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 type = custom/menu
@@ -389,27 +402,38 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-open = " "
+; label-open-foreground = ${boti/settings.underline}
+label-close = "  |"
+; label-close-foreground = ${colors.secondary}
+label-separator = "  "
+; label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
+menu-0-0 = " "
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 = " "
 menu-0-1-exec = menu-open-2
+menu-0-2 = " "
+menu-0-2-exec = menu-open-3
+menu-0-3 = " "
+menu-0-3-exec = menu-open-4
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-0 = " "
+menu-1-0-exec = bspc quit
 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-2-0 = " "
+menu-2-0-exec = systemctl suspend
+
+menu-3-0 = " "
+menu-3-0-exec = reboot
+
+menu-4-0 = " "
+menu-4-0-exec = shutdown now
+
+; format-background= ${boti/settings.background}
+; format-underline= ${boti/settings.underline}
+; format-padding= ${boti/settings.padding}
+format-padding = 2
 
 [settings]
 screenchange-reload = true
