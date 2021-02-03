@@ -70,8 +70,9 @@ font-5 = FontAwesome5Brands:style=Regular:pixelsize=16:antialias=false;1
 font-6 = icomoon:style=Regular:pixelsize=14:antialias=false;1
 
 font-7 = TerminessTTF Nerd Font Mono:style=Medium:pixelsize=25:antialias=false;5
+font-8 = TerminessTTF Nerd Font Mono:style=Medium:pixelsize=17:antialias=false;2
 
-font-8 = NotoSansMono Nerd Font:style=Regular:pixelsize=20:antialias=false;1
+font-9 = NotoSansMono Nerd Font:style=Regular:pixelsize=20:antialias=false;1
 
 modules-left = powermenu bspwm
 modules-center = pulseaudio filesystem-root memory cpu temperature
@@ -174,7 +175,7 @@ card = intel_backlight
 type = internal/cpu
 interval = 1
 format = <label> <bar-load>
-label = " "
+label = "  "
 ;ramp-load-spacing = 1
 ;ramp-load-0 = ▁
 ;ramp-load-0-foreground = #aaff77
@@ -219,7 +220,7 @@ format-padding = ${boti/settings.padding}
 type = internal/memory
 interval = 2
 format = <label> <bar-used>
-label = " "
+label = "  "
 ; label-foreground = ${boti/settings.underline}
 format-background = ${boti/settings.background}
 format-underline = ${boti/settings.underline}
@@ -390,9 +391,10 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = " "
-ramp-1 = " "
-ramp-2 = " "
+ramp-font = 9
+ramp-0 = " "
+ramp-1 = " "
+ramp-2 = " "
 ;ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
