@@ -62,21 +62,12 @@ module-margin-right = 2
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
+font-3 = icomoon:style=Regular:pixelsize=14:antialias=false;2
+font-4 = TerminessTTF Nerd Font:style=Medium:pixelsize=14:antialias=false;2
 
-font-3 = FontAwesome5Free:style=Solid:pixelsize=12:antialias=false;1
-font-4 = FontAwesome5Free:style=Regular:pixelsize=10:antialias=false;1
-font-5 = FontAwesome5Brands:style=Regular:pixelsize=16:antialias=false;1
-
-font-6 = icomoon:style=Regular:pixelsize=14:antialias=false;1
-
-font-7 = TerminessTTF Nerd Font Mono:style=Medium:pixelsize=25:antialias=false;5
-font-8 = TerminessTTF Nerd Font Mono:style=Medium:pixelsize=17:antialias=false;2
-
-font-9 = NotoSansMono Nerd Font:style=Regular:pixelsize=20:antialias=false;1
-
-modules-left = powermenu bspwm
-modules-center = pulseaudio filesystem-root memory cpu temperature
-modules-right = date
+modules-left = bspwm powermenu
+modules-center = pulseaudio filesystem-root memory cpu 
+modules-right = appsmenu browsermenu date
 
 tray-position = right
 tray-padding = 2
@@ -105,8 +96,8 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-
-label-mounted =   %used% (%percentage_used%%)
+label-font = 
+label-mounted =   %used% (%percentage_used%%)
 label-unmounted = %mountpoint% not mounted
 label-mounted-background = ${boti/settings.background}
 label-mounted-underline = ${boti/settings.underline}
@@ -135,64 +126,12 @@ label-empty-padding = 2
 label-separator = / 
 label-separator-foreground = ${boti/settings.background}
 
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-[module/backlight]
-type = internal/backlight
-card = intel_backlight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/backlight
-type = internal/backlight
-card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
 interval = 1
 format = <label> <bar-load>
-label = "  "
-;ramp-load-spacing = 1
-;ramp-load-0 = ▁
-;ramp-load-0-foreground = #aaff77
-;ramp-load-1 = ▂
-;ramp-load-1-foreground = #aaff77
-;ramp-load-2 = ▃
-;ramp-load-2-foreground = #aaff77
-;ramp-load-3 = ▄
-;ramp-load-3-foreground = #fba922
-;ramp-load-4 = ▅
-;ramp-load-4-foreground = #fba922
-;ramp-load-5 = ▆
-;ramp-load-5-foreground = #fba922
-;ramp-load-6 = ▇
-;ramp-load-6-foreground = #ff5555
-;ramp-load-7 = █
-;ramp-load-7-foreground = #ff5555
+label = "  "
 
 bar-load-width = 8
 bar-load-foreground-0 = #50db00
@@ -243,44 +182,6 @@ bar-used-empty = ■
 bar-used-empty-font = 2
 bar-used-empty-foreground = ${colors.foreground-alt}
 
-
-[module/wlan]
-type = internal/network
-interface = net1
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = enp4s0
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
@@ -341,62 +242,6 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-background = ${boti/settings.background}
-format-underline = ${boti/settings.underline}
-format-padding = ${boti/settings.padding}
-
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-font = 9
-ramp-0 = " "
-ramp-1 = " "
-ramp-2 = " "
-;ramp-foreground = ${colors.foreground-alt}
-
 [module/powermenu]
 type = custom/menu
 
@@ -404,38 +249,152 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = " "
+label-open = 
 ; label-open-foreground = ${boti/settings.underline}
-label-close = "  |"
+label-close = 
 ; label-close-foreground = ${colors.secondary}
-label-separator = "  "
+label-separator = " "
 ; label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = " "
+menu-0-0 =  
 menu-0-0-exec = menu-open-1
-menu-0-1 = " "
+menu-0-1 =  
 menu-0-1-exec = menu-open-2
-menu-0-2 = " "
+menu-0-2 =  
 menu-0-2-exec = menu-open-3
-menu-0-3 = " "
+menu-0-3 =  
 menu-0-3-exec = menu-open-4
 
-menu-1-0 = " "
+menu-1-0 =  
 menu-1-0-exec = bspc quit
-
-menu-2-0 = " "
+menu-2-0 =  
 menu-2-0-exec = systemctl suspend
-
-menu-3-0 = " "
+menu-3-0 =  
 menu-3-0-exec = reboot
-
-menu-4-0 = " "
+menu-4-0 =  
 menu-4-0-exec = shutdown now
 
-; format-background= ${boti/settings.background}
-; format-underline= ${boti/settings.underline}
-; format-padding= ${boti/settings.padding}
-format-padding = 2
+label-open-background = ${boti/settings.background}
+label-open-underline = ${boti/settings.underline}
+label-open-padding = 1
+
+label-close-background = ${boti/settings.background}
+label-close-underline = ${boti/settings.underline}
+label-close-padding = 1
+
+menu-0-0-underline = ${boti/settings.underline}
+menu-0-0-padding = 1
+menu-0-1-underline = ${boti/settings.underline}
+menu-0-1-padding = 1
+menu-0-2-underline = ${boti/settings.underline}
+menu-0-2-padding = 1
+menu-0-3-underline = ${boti/settings.underline}
+menu-0-3-padding = 1
+
+menu-1-0-underline = ${boti/settings.underline}
+menu-1-0-padding = 1
+menu-2-0-underline = ${boti/settings.underline}
+menu-2-0-padding = 1
+menu-3-0-underline = ${boti/settings.underline}
+menu-3-0-padding = 1
+menu-4-0-underline = ${boti/settings.underline}
+menu-4-0-padding = 1
+
+[module/browsermenu]
+type = custom/menu
+
+expand-right = false
+
+format-spacing = 1
+
+label-open = 
+; label-open-foreground = ${boti/settings.underline}
+label-close = 
+; label-close-foreground = ${colors.secondary}
+label-separator = " "
+; label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 =  
+menu-0-0-exec = brave -incognito
+menu-0-1 =  
+menu-0-1-exec = brave gmail.com
+menu-0-2 =  
+menu-0-2-exec = brave drive.google.com
+menu-0-3 =  
+menu-0-3-exec = brave facebook.com
+menu-0-4 =  
+menu-0-4-exec = brave youtube.com
+menu-0-5 =  
+menu-0-5-exec = brave frame.neptun.bme.hu/hallgatoi/login.aspx 
+menu-0-6 = 
+menu-0-6-exec = brave vik.bme.hu
+
+label-open-background = ${boti/settings.background}
+label-open-underline = ${boti/settings.underline}
+label-open-padding = 1
+
+label-close-background = ${boti/settings.background}
+label-close-underline = ${boti/settings.underline}
+label-close-padding = 1
+
+menu-0-0-underline = ${boti/settings.underline}
+menu-0-0-padding = 1
+menu-0-1-underline = ${boti/settings.underline}
+menu-0-1-padding = 1
+menu-0-2-underline = ${boti/settings.underline}
+menu-0-2-padding = 1
+menu-0-3-underline = ${boti/settings.underline}
+menu-0-3-padding = 1
+menu-0-4-underline = ${boti/settings.underline}
+menu-0-4-padding = 1
+menu-0-5-underline = ${boti/settings.underline}
+menu-0-5-padding = 1
+menu-0-6-underline = ${boti/settings.underline}
+menu-0-6-padding = 1
+
+[module/appsmenu]
+type = custom/menu
+
+expand-right = false
+
+format-spacing = 1
+
+label-open = 
+; label-open-foreground = ${boti/settings.underline}
+label-close = 
+; label-close-foreground = ${colors.secondary}
+label-separator = " "
+; label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 =  
+menu-0-0-exec = alacritty
+menu-0-1 =  
+menu-0-1-exec = nautilus
+menu-0-2 =  
+menu-0-2-exec = deadbeef
+menu-0-3 = 
+menu-0-3-exec = vlc
+menu-0-4 = 
+menu-0-4-exec = evince
+ 
+label-open-background = ${boti/settings.background}
+label-open-underline = ${boti/settings.underline}
+label-open-padding = 1
+
+label-close-background = ${boti/settings.background}
+label-close-underline = ${boti/settings.underline}
+label-close-padding = 1
+
+menu-0-0-underline = ${boti/settings.underline}
+menu-0-0-padding = 1
+menu-0-1-underline = ${boti/settings.underline}
+menu-0-1-padding = 1
+menu-0-2-underline = ${boti/settings.underline}
+menu-0-2-padding = 1
+menu-0-3-underline = ${boti/settings.underline}
+menu-0-3-padding = 1
+menu-0-4-underline = ${boti/settings.underline}
+menu-0-4-padding = 1
 
 [settings]
 screenchange-reload = true
