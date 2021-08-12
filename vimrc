@@ -1,18 +1,20 @@
 " POWERLINE
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-set laststatus=2
+"python3 from powerline.vim import setup as powerline_setup
+"python3 powerline_setup()
+"python3 del powerline_setup
 set showtabline=2
+set laststatus=2
 set t_Co=256
+set timeoutlen=200
 
 syntax on
+filetype on
 
 set noerrorbells    " disables the end of the line bell
 set tabstop=4 softtabstop=4		" Tab displays 4 spaces
 set shiftwidth=4
 set expandtab		" turns tab into spaces
-set smartindent     " auto indentation
+set autoindent     " auto indentation
 set nu              " linenumbers
 set nowrap  		" disables linewrapping
 set smartcase       " do smart case matching
@@ -21,24 +23,26 @@ set noswapfile		" wont create swap files
 set undodir=~/.vim/undodir
 set undofile
 set incsearch       " incremental searching (highlighting)
-
+set encoding=utf-8 
 set mouse=a         " Enable mouse usage (all modes)
 set scrolloff=5     " distance (unit: line) when scrolling
+set number          " show current line number
+set relativenumber  " show relative line numbers
 
-set colorcolumn=80
+set colorcolumn=120
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'https://github.com/ycm-core/YouCompleteMe.git'
 Plug 'morhetz/gruvbox'
-Plug 'jremmen/vim-ripgrep'
-Plug 'tpope/vim-fugitive'
+"Plug 'jremmen/vim-ripgrep'
+"Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
 Plug 'lyuts/vim-rtags'
-Plug 'kien/ctrlp.vim.git'
-Plug 'https://github.com/ycm-core/YouCompleteMe.git'
+"Plug 'kien/ctrlp.vim.git'
 Plug 'mbbill/undotree'
-
+Plug 'vhda/verilog_systemverilog.vim'
 call plug#end()
 
 colorscheme gruvbox
@@ -49,6 +53,8 @@ let g:netrw_banner=0
 let g:netrw_winsize=25
 
 let mapleader= " "
+
+:imap ii <Esc>
 
 ":nnoremap <F3> :UndotreeShow<CR>
 ":nnoremap <F4> :UndotreeHide<CR>
@@ -72,3 +78,9 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 " YCM
 nnoremap <silent> <leader>to :YcmCompleter GoTo<CR>
 nnoremap <silent> <leader>fix :YcmCompleter FixIt<CR>
+
+" Verilog
+"nnoremap <leader>i :VerilogFollowInstance<CR>
+"nnoremap <leader>I :VerilogFollowPort<CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
