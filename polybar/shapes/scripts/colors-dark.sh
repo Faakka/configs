@@ -62,7 +62,7 @@ elif  [[ $1 = "--budgie-pink" ]]; then
 	change_color
 elif  [[ $1 = "--budgie-purple" ]]; then
 	SH1="#390859"	SH2="#52166C"	SH3="#5D1F74"	SH4="#6C2B83"
-    SH5="#7C3B8F"	SH6="#893D97"	SH7="#9B55A7"   SH8="#9B55A7"
+    SH5="#7C3B8F"	SH6="#893D97"	SH7="#9B55A7"   SH8="#A77EAE"
 	change_color
 elif  [[ $1 = "--cyan" ]]; then
 	SH1="#006064"	SH2="#00838F"	SH3="#0097A7"	SH4="#00ACC1"

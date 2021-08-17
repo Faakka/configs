@@ -1,16 +1,22 @@
 #! /bin/sh
 
-sxhkd &
-xsetroot -cursor_name left_ptr &
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+#xsetroot -cursor_name left_ptr &
 #$HOME/.config/polybar/launch.sh
+
+xinput set-prop "ELAN1200:00 04F3:30F7 Touchpad" "libinput Tapping Enabled" 1
+setxkbmap hu &
+xbindkeys
+
 bash ~/.config/polybar/launch.sh --shapes
-bash ~/.config/polybar/shapes/scripts/colors-dark.sh --gray
-feh --bg-fill $HOME/Pictures/ledu-jan1.jpg
-compton &
+#bash ~/.config/polybar/shapes/scripts/colors-dark.sh --gray
+nitrogen --restore
+picom &
 # redshift &
 # bspwm-focused-top &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -d I II III IV V VI VII VIII IX
 
 ###--- Global settings ---###
 bspc config automatic_scheme alternate
