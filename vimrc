@@ -1,7 +1,7 @@
 " POWERLINE
-"python3 from powerline.vim import setup as powerline_setup
-"python3 powerline_setup()
-"python3 del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 set showtabline=2
 set laststatus=2
 set t_Co=256
@@ -43,6 +43,7 @@ Plug 'lyuts/vim-rtags'
 "Plug 'kien/ctrlp.vim.git'
 Plug 'mbbill/undotree'
 Plug 'vhda/verilog_systemverilog.vim'
+Plug 'junegunn/fzf'
 call plug#end()
 
 colorscheme gruvbox
@@ -111,3 +112,8 @@ inoremap <C-k> <esc>:m .-2<CR>==
 "nnoremap <leader>k :m .-2<CR>==
 "nnoremap <leader>j :m .+1<CR>==
 
+" Jumping back to the last file open
+nnoremap <leader><Tab> <C-^>
+
+" Launching fuzzy finder
+nnoremap <leader>p :FZF<CR>

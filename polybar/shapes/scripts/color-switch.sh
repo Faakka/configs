@@ -8,7 +8,7 @@ MENU="$(rofi -no-config -no-lazy-grab -sep "|" -dmenu -i -p '' \
 <<< "♥ amber|♥ blue|♥ blue-gray|♥ brown|♥ cyan|♥ deep-orange|\
 ♥ deep-purple|♥ green|♥ gray|♥ indigo|♥ blue-light|♥ green-light|\
 ♥ lime|♥ orange|♥ pink|♥ purple|♥ red|♥ teal|♥ yellow|♥ amber-dark|\
-♥ blue-dark|♥ blue-gray-dark|♥ brown-dark|♥ budgie-blue-dark|♥ budgie-pink-dark|♥ budgie-purple-dark|♥ cyan-dark|♥ deep-orange-dark|\
+♥ blue-dark|♥ blue-gray-dark|♥ brown-dark|♥ budgie-blue-dark|♥ budgie-pink-dark|♥ budgie-purple-dark|♥ gruvbox-dark|♥ gruvbox-mono-dark|♥ cyan-dark|♥ deep-orange-dark|\
 ♥ deep-purple-dark|♥ green-dark|♥ gray-dark|♥ indigo-dark|♥ blue-light-dark|\
 ♥ green-light-dark|♥ lime-dark|♥ orange-dark|♥ pink-dark|♥ purple-dark|♥ red-dark|♥ teal-dark|♥ yellow-dark|")"
             case "$MENU" in
@@ -40,6 +40,8 @@ MENU="$(rofi -no-config -no-lazy-grab -sep "|" -dmenu -i -p '' \
 				*budgie-blue-dark) "$SDIR"/colors-dark.sh --budgie-blue	;;
 				*budgie-pink-dark) "$SDIR"/colors-dark.sh --budgie-pink	;;
 				*budgie-purple-dark) "$SDIR"/colors-dark.sh --budgie-purple	;;
+                *gruvbox-dark) "$SDIR"/colors-dark.sh --gruvbox ;;
+                *gruvbox-mono-dark) "$SDIR"/colors-dark.sh --gruvbox-mono ;;
 				*cyan-dark) "$SDIR"/colors-dark.sh --cyan ;;
 				*deep-orange-dark) "$SDIR"/colors-dark.sh --deep-orange ;;
 				*deep-purple-dark) "$SDIR"/colors-dark.sh --deep-purple ;;

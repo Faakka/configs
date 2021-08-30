@@ -8,6 +8,7 @@ RFILE="$HOME/.config/polybar/shapes/scripts/rofi/colors.rasi"
 change_color() {
 	# polybar
 	sed -i -e 's/background = #.*/background = #1F1F1F/g' $PFILE
+	sed -i -e 's/background-alt = #.*/background-alt = #1F1F1F/g' $PFILE
 	sed -i -e 's/foreground = #.*/foreground = #FFFFFF/g' $PFILE
 	sed -i -e 's/foreground-alt = #.*/foreground-alt = #FFFFFF/g' $PFILE
 	sed -i -e "s/shade1 = #.*/shade1 = $SH1/g" $PFILE
@@ -30,6 +31,39 @@ change_color() {
 	  bg2:   ${SH3}FF;
 	  bg3:   ${SH4}FF;
 	  fg:    #FFFFFFFF;
+	}
+	EOF
+	
+	polybar-msg cmd restart
+}
+
+# Change colors
+change_color_gruvbox() {
+	# polybar
+	sed -i -e 's/background = #.*/background = #282828/g' $PFILE
+	sed -i -e 's/background-alt = #.*/background-alt = #EBDBB2/g' $PFILE
+	sed -i -e 's/foreground = #.*/foreground = #EBDBB2/g' $PFILE
+	sed -i -e 's/foreground-alt = #.*/foreground-alt = #282828/g' $PFILE
+	sed -i -e "s/shade1 = #.*/shade1 = $SH1/g" $PFILE
+	sed -i -e "s/shade2 = #.*/shade2 = $SH2/g" $PFILE
+	sed -i -e "s/shade3 = #.*/shade3 = $SH3/g" $PFILE
+	sed -i -e "s/shade4 = #.*/shade4 = $SH4/g" $PFILE
+	sed -i -e "s/shade5 = #.*/shade5 = $SH5/g" $PFILE
+	sed -i -e "s/shade6 = #.*/shade6 = $SH6/g" $PFILE
+	sed -i -e "s/shade7 = #.*/shade7 = $SH7/g" $PFILE
+	sed -i -e "s/shade8 = #.*/shade8 = $SH8/g" $PFILE
+	
+	# rofi
+	cat > $RFILE <<- EOF
+	/* colors */
+
+	* {
+	  al:    #00000000;
+	  bg:    #282828FF;
+	  bg1:   ${SH1}FF;
+	  bg2:   ${SH2}FF;
+	  bg3:   ${SH3}FF;
+	  fg:    #EBDBB2FF;
 	}
 	EOF
 	
@@ -64,6 +98,14 @@ elif  [[ $1 = "--budgie-purple" ]]; then
 	SH1="#390859"	SH2="#52166C"	SH3="#5D1F74"	SH4="#6C2B83"
     SH5="#7C3B8F"	SH6="#893D97"	SH7="#9B55A7"   SH8="#A77EAE"
 	change_color
+elif  [[ $1 = "--gruvbox" ]]; then
+	SH1="#CC241D"	SH2="#689D6A"	SH3="#D79921"	SH4="#458588"
+    SH5="#CC241D"	SH6="#689D6A"	SH7="#D79921"   SH8="#458588"
+	change_color_gruvbox
+elif  [[ $1 = "--gruvbox-mono" ]]; then
+	SH1="#EBDBB2"	SH2="#282828"	SH3=$SH1	SH4=$SH2
+    SH5=$SH1	SH6=$SH2	SH7=$SH1   SH8=$SH2
+	change_color_gruvbox
 elif  [[ $1 = "--cyan" ]]; then
 	SH1="#006064"	SH2="#00838F"	SH3="#0097A7"	SH4="#00ACC1"
 	SH5="#00BCD4"	SH6="#26C6DA"	SH7="#4DD0E1"	SH8="#80DEEA"
