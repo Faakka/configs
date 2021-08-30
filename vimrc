@@ -1,7 +1,7 @@
 " POWERLINE
-"python3 from powerline.vim import setup as powerline_setup
-"python3 powerline_setup()
-"python3 del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 set showtabline=2
 set laststatus=2
 set t_Co=256
@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'https://github.com/ycm-core/YouCompleteMe.git'
 Plug 'morhetz/gruvbox'
+Plug 'dracula/vim'
 "Plug 'jremmen/vim-ripgrep'
 "Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
@@ -43,9 +44,11 @@ Plug 'lyuts/vim-rtags'
 "Plug 'kien/ctrlp.vim.git'
 Plug 'mbbill/undotree'
 Plug 'vhda/verilog_systemverilog.vim'
+Plug 'junegunn/fzf'
 call plug#end()
 
 colorscheme gruvbox
+" colorscheme dracula
 set background=dark
 
 let g:netrw_browse_split=2
@@ -70,7 +73,7 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>uu :UndotreeHide<CR>
 
-nnoremap <leader>fm :wincmd v<CR> <bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>fm :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 "nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
@@ -111,3 +114,8 @@ inoremap <C-k> <esc>:m .-2<CR>==
 "nnoremap <leader>k :m .-2<CR>==
 "nnoremap <leader>j :m .+1<CR>==
 
+" Jumping back to the last file open
+nnoremap <leader><Tab> <C-^>
+
+" Launching fuzzy finder
+nnoremap <leader>p :FZF<CR>

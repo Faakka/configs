@@ -51,6 +51,7 @@ bspc rule -a Gnome-terminal state=floating
 # bspc rule -a Vivado state=floating
 bspc rule -a Java state=floating
 bspc rule -a Nemo state=floating
+bspc rule -a Zathura state=tiled
 bspc rule -a Thunar state=floating
 bspc rule -a Putty state=floating
 bspc rule -a Pamac-manager state=floating

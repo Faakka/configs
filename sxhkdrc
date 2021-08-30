@@ -11,6 +11,9 @@ super + @space
     rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/shapes/scripts/rofi/launcher.rasi
 #	dmenu_run
 
+super + alt + @space
+    dmenu_run
+
 super + b
     brave
 
@@ -148,10 +151,6 @@ super + {Left,Down,Up,Right}
 #
 # custom keybindings
 #
-
-# cheatsheet
-super + alt + space
-	cheatsheet
 
 # move current window to a pre-selceted space
 super + shift + p
