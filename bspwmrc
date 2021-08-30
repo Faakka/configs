@@ -2,17 +2,13 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-#xsetroot -cursor_name left_ptr &
+xsetroot -cursor_name left_ptr &
 #$HOME/.config/polybar/launch.sh
 
-xinput set-prop "ELAN1200:00 04F3:30F7 Touchpad" "libinput Tapping Enabled" 1
-setxkbmap hu &
-xbindkeys
-
 bash ~/.config/polybar/launch.sh --shapes
-#bash ~/.config/polybar/shapes/scripts/colors-dark.sh --gray
+bash ~/.config/polybar/shapes/scripts/colors-dark.sh --gray
 nitrogen --restore
-picom &
+compton &
 # redshift &
 # bspwm-focused-top &
 
