@@ -38,14 +38,14 @@ prompt {
     enabled: 						true;
 	padding: 						10px 15px 10px 15px;
 	background-color: 				@bg1;
-	text-color: 					#FFFFFF;
+	text-color: 					@bg;
 	font:							"Iosevka Nerd Font 10";
 }
 
 entry {
     background-color:               @bg2;
-    text-color:                     #FFFFFF;
-    placeholder-color:              #FFFFFF;
+    text-color:                     @fg;
+    placeholder-color:              @fg;
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "Search...";

@@ -20,5 +20,5 @@ window {
 
 entry {
     expand: 				true;
-    text-color:				@bg2;
+    text-color:				@fg;
 }
